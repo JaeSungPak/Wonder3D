@@ -224,9 +224,24 @@ def log_validation_joint(dataloader, vae, feature_extractor, image_encoder, unet
                         idx = i*num_views + j
                         normal = normals_pred[idx]
                         color = images_pred[idx]
+                        
+                        color_name = '0'
+                        
+                        if view == 'front':
+                            color_name = '2'
+                        if view == 'front_right':
+                            color_name = '3'
+                        if view == 'right':
+                            color_name = '4'
+                        if view == 'back':
+                            color_name = '5'
+                        if view == 'left':
+                            color_name = '0'
+                        if view == 'front_left':
+                            color_name = '1'
 
                         normal_filename = f"normals_000_{view}.png"
-                        rgb_filename = f"rgb_000_{view}.png"
+                        rgb_filename = f"{color_name}.png"
                         normal = save_image(normal, os.path.join(normal_dir, normal_filename))
                         color = save_image(color, os.path.join(scene_dir, rgb_filename))
 
