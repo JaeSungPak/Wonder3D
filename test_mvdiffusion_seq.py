@@ -334,7 +334,7 @@ if __name__ == '__main__':
     parser.add_argument('--config', type=str, required=True)
     args, extras = parser.parse_known_args()
 
-    from utils.misc import load_config    
+    from utils.misc import load_config
 
     # parse YAML config to OmegaConf
     cfg = load_config(args.config, cli_args=extras)
